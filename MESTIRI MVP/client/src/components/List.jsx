@@ -2,14 +2,16 @@ import React from "react";
 import ListItem from "./ListItem.jsx";
 
 const List = (props) => (
-  <div>
+  <div >
     <h4> List Component </h4>
     There are {props.items.length} items.
+    <div className='container'>
     {props.items.map((item, index) => (
-      <div key={index}>
+      <div  className="card" key={index}>
         <ListItem item={item} />
       </div>
     ))}
+    </div>
   </div>
 );
 

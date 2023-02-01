@@ -1,11 +1,19 @@
 const mongoose = require("mongoose");
 const db = require("./index.js");
 
-const itemSchema = new mongoose.Schema({
+const teacherSchema = new mongoose.Schema({
+  imageUrl: String,
+  name: { type: String, unique: true },
   description: String,
-  quantity: Number,
+  subjects : [String],
+  levels : [String],
+  cost : String,
+  contact : { type: String, unique: true },
+  comments : [String],
+  messages : [String],
+  rate : [Number],
 });
 
-const Item = mongoose.model("Item", itemSchema);
+const teacher = mongoose.model("teacher", teacherSchema);
 
-module.exports = Item;
+module.exports = teacher;
