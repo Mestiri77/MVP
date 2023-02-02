@@ -8,7 +8,7 @@ const Home = (props) => (
         <button className="teacherbtn"  onClick={()=>(props.changeView("teachers"))}> Teacher</button></div>
         
         <h1 className="welcome">First sesion for free</h1>
-        <p className="for">Try owl and your be eager to try it again</p>
+        <p className="for">If you don't struggle you don't improve</p>
     </div>
 );
 

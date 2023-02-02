@@ -33,8 +33,8 @@ const App = () => {
   )
 useEffect( ()=>(fetch()) , [update])
 
-const add = (name,description,subjects,levels,cost,contact,comments,messages,rate) => {
-  axios.post('/api/items',{name:name,description:description,subjects:subjects,levels:levels,cost:cost,contact:contact,comments:comments,messages:messages,rate:rate}).then((response)=>{
+const add = (name,description,subjects,levels,cost,contact,comments,messages,rate,imageUrl) => {
+  axios.post('/api/items',{name:name,description:description,subjects:subjects,levels:levels,cost:cost,contact:contact,comments:comments,messages:messages,rate:rate,imageUrl:imageUrl}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
   }).catch((err)=>{
@@ -59,7 +59,7 @@ const changeCost = (id,cost)=>{
 };
 
 const postMessages = (id,message)=>{
-  axios.put(`/api/items/${id}`,{messages:message}).then((response)=>{
+  axios.put(`/api/items/messages/${id}`,{messages:message}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
   }).catch((err)=>{
@@ -67,7 +67,7 @@ const postMessages = (id,message)=>{
   })
 };
 const postComments = (id,comment)=>{
-  axios.put(`/api/items/${id}`,{comments:comment}).then((response)=>{
+  axios.put(`/api/items/comments/${id}`,{comments:comment}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
   }).catch((err)=>{
@@ -91,7 +91,7 @@ const updateName= (id,name)=>{
   })
 }
 const changeLevels= (id,levels)=>{
-  axios.put(`/api/items/${id}`,{levels:levels}).then((response)=>{
+  axios.put(`/api/items/levels/${id}`,{levels:levels}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
   }).catch((err)=>{
@@ -99,7 +99,7 @@ const changeLevels= (id,levels)=>{
   })
 }
 const changeSubjects= (id,subjects)=>{
-  axios.put(`/api/items/${id}`,{subjects:subjects}).then((response)=>{
+  axios.put(`/api/items/subjects/${id}`,{subjects:subjects}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
   }).catch((err)=>{

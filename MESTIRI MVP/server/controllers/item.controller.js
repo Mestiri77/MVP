@@ -14,10 +14,8 @@ const selectAll = async function (req, res) {
 };
 
 const add = async (req, res) => {
-  console.log(req.body)
-  console.log("tet :" , teacher);
   try {
-    // const save = await teacher.create(req.body)
+    const save = await teacher.create(req.body)
     res.json(save)
   } catch (error) {
     console.log(error);

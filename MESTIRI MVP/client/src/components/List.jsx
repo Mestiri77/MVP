@@ -10,7 +10,7 @@ const List = (props) => (
     <div className='container'>
     {props.items.map((item, index) => (
       <div  className="card" key={index}>
-        <ListItem item={item} />
+        <ListItem item={item}   postMessages={props.postMessages}  postComments={props.postComments}/>
       </div>
     ))}
     </div>

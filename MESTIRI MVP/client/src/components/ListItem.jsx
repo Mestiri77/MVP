@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 const ListItem = (props) =>{ 
   const [view,setView] = useState(false)
+  const [com,setCom]=useState(false)
+  const [comm,setComm]=useState("")
+  const [mes,setMes]=useState(false)
+  const [mess,setMess]=useState("")
 return (
   
   <div >
@@ -25,8 +29,16 @@ return (
      Comments : {props.item.comments}
      </div>)
      }
-     <button>COMMENT</button>
-     <button>RATE</button>
+     <button onClick={()=>(setCom(!com))}>COMMENT</button>
+     {com&&(<div>
+      <input type="text" placeholder='post a comment' onChange={(e)=>(setComm(e.target.value))} />
+      <button onClick={()=>{return (props.postComments(props.item._id,comm),setCom(!com))}}>post</button>
+     </div>)}
+     <button onClick={()=>(setMes(!mes))}>Send Message</button>
+     {mes&&(<div>
+      <input type="text" placeholder='send a message' onChange={(e)=>(setMess(e.target.value))} />
+      <button onClick={()=>{return (props.postMessages(props.item._id,mess),setMes(!mes))}}>post</button>
+     </div>)}
   </div>
 )}
 
