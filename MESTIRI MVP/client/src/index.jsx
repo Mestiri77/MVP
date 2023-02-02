@@ -118,7 +118,7 @@ const renderView =()=> {
     updateName={updateName}  updateDescription={updateDescription}   />;
     
   } else if (view === "students") {
-    return <List  items={items}   postMessages={postMessages}  postComments={postComments}    />;
+    return <List  items={items}   postMessages={postMessages}  postComments={postComments}  />;
     
   }
 }
@@ -126,7 +126,7 @@ const renderView =()=> {
 
 const search = (query) => {
   let newData = items.filter((e) => {
-    return (e.name.toLowerCase().includes(query.toLowerCase()) );
+    return (e.name.toLowerCase().includes(query.toLowerCase()) || e.subjects[0].toLowerCase().includes(query.toLowerCase()) || e.cost.toLowerCase().includes(query.toLowerCase()) );
   })
   setItems(newData)
 }
