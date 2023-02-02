@@ -4,7 +4,7 @@ const Search = (props) => {
   const [query, setQuery] = useState("");
 
   return (
-    <div>
+    <div className="search">
       <input
         type="text"
         className="search"

@@ -5,18 +5,25 @@ import axios from 'axios'
 import List from './components/List.jsx'
 import Search from './components/Search.jsx'
 import Home from './components/Home.jsx'
+import Teachers from './components/Teachers.jsx'
+
+
 
 
 const App = () => {
   const [items, setItems] = useState([])
   const [update,setUpdate]= useState(false)
-  const [view,setView]=useState("students")
+  const [view,setView]=useState("home")
+
+  const changeView = (view) =>{
+    setView(view)
+  }
 
   const fetch = () => (
     $.ajax({
       url: '/api/items',
       success: (data) => {
-        console.log(data)
+        
         setItems(data)
       },
       error: (err) => {
@@ -42,7 +49,7 @@ const remove = (id)=>{
     console.log(err)
   })
 };
-const change = (id,cost)=>{
+const changeCost = (id,cost)=>{
   axios.put(`/api/items/${id}`,{cost:cost}).then((response)=>{
     console.log(response.data)
     setUpdate(!update)
@@ -51,16 +58,68 @@ const change = (id,cost)=>{
   })
 };
 
+const postMessages = (id,message)=>{
+  axios.put(`/api/items/${id}`,{messages:message}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+};
+const postComments = (id,comment)=>{
+  axios.put(`/api/items/${id}`,{comments:comment}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+};
+const updateDescription= (id,description)=>{
+  axios.put(`/api/items/${id}`,{description:description}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+const updateName= (id,name)=>{
+  axios.put(`/api/items/${id}`,{name:name}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+const changeLevels= (id,levels)=>{
+  axios.put(`/api/items/${id}`,{levels:levels}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+const changeSubjects= (id,subjects)=>{
+  axios.put(`/api/items/${id}`,{subjects:subjects}).then((response)=>{
+    console.log(response.data)
+    setUpdate(!update)
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+
+
+
 
 const renderView =()=> {
   if (view === "home") {
-    return <Home />
+    return <Home  changeView={changeView} />
   } else if (view === "teachers") {
-    // return <Teachers items={items}    />;
-    // comment={comment} message ={message}
+    return <Teachers data={items} remove={remove} add={add} changeCost={changeCost} changeLevels={changeLevels} changeSubjects={changeSubjects} 
+    updateName={updateName}  updateDescription={updateDescription}   />;
+    
   } else if (view === "students") {
-    return <List  items={items} add={add} remove={remove} change={change} />;
-    // changeLevels={changeLevels} changeSubjects={changeSubjects} 
+    return <List  items={items}   postMessages={postMessages}  postComments={postComments}    />;
+    
   }
 }
 
@@ -72,9 +131,21 @@ const search = (query) => {
   setItems(newData)
 }
 
+
+const footer = () => (
+  <footer>
+  <p>Author: Never Stop FarouKing<br/>
+  <a href="mailto:faroukmestiri77@gmail.com">CONTACT ME</a></p>
+</footer>
+)
+
+  
+
+
 return (
   <div>
     <nav className=" nav">
+      <img className='logo' src="./assests/logo.png" onClick={()=>(setView("home"))} />
       <div
         className={
           view !== "home"
@@ -95,12 +166,25 @@ return (
       >
         SEE ALL TEACHERS
       </div>
+      <div
+        className={
+          view !== "teachers"
+            ? "nav-unselected"
+            : "nav-selected"
+        }
+        onClick={() => {
+          setView("teachers");
+        }}
+      >
+        ADD POST
+      </div>
       <div>
         <Search search={search} />
       </div>
     </nav>
 
     {renderView()}
+    {footer()}
   </div>
 );
 }

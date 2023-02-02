@@ -1,11 +1,16 @@
 nav  {
-    background-color: #A3BCF9;
-   margin: 0px;
-   padding: 10px;
+   background: linear-gradient(to top left, #4A148C, #C51162);
    display: flex;
    justify-content: space-between;
    align-items: center;
    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   position: absolute;
+   right : 0;
+   top: 0;
+   width: 100%;
+   padding: 0px 0px 0px;
+   height: 7pc;
+   font-size: 2pc;
 }
 
 .nav-selected {
@@ -22,7 +27,7 @@ nav  {
     grid-template-columns: repeat(4,1fr);
   justify-items: center;
   justify-content: center;
-  padding: 10%;
+  padding: 0%;
   gap: 10px  ;
 }
 
@@ -32,13 +37,98 @@ img {
 
 .card{
     text-align: center;
-    background: #A3BCF9;
+    background: #bb54bb;
     opacity: 85%;
     backdrop-filter: blur(50px);
  border-radius: 8px;
-    padding: 10px;
+   margin-right: 0%;
+   transition-duration: 3s;
  }
 
  body {
-    background-color: #FFC4D1
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: linear-gradient(to top left, #4A148C, #C51162);
+   background-repeat: no-repeat;
+   height: 95vh;
+   color: white;
+   width: 100%;
+   background-size: cover;
+   margin-left: -200px;
+ }
+ footer {
+   padding: 0px 0px 0px 0px;
+   background: linear-gradient(to top left, #4A148C, #C51162);
+   position: absolute;
+   right : 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+ }
+ .logo {
+   width: 7.7pc;
+   padding: 0% 20px;
+ }
+ .studentbtn {
+   width: 25pc;
+   height: 8pc;
+   font-size: 5pc;
+   font-family: Gabriela;
+ }
+ .studentbtn:hover {
+	transform: scale(1.2);
+cursor: pointer;}
+
+
+ .teacherbtn {
+   width: 25pc;
+   height: 8pc;
+   font-size: 5pc;
+   font-family: Gabriela;
+ }
+
+ .teacherbtn:hover {
+	transform: scale(1.2);
+cursor: pointer;}
+
+ .buttons {
+   display:grid ;
+   grid-template-columns: repeat(4,1fr);
+ justify-items: center;
+ justify-content: center;
+ padding: 0% 55%;
+ gap: 5pc  ;
+ }
+ .welcome {
+   font-size: 3.3pc;
+   font-family: Gabriela;
+   text-align: center;
+ }
+ .for {
+   font-size: 2pc;
+   font-family: Gabriela;
+   text-align: center;
+   position: relative;
+   
+ }
+ .div {
+   margin-left: 26%;
+ }
+ .teach {
+   margin-left: 420px;
+ }
+ .find {
+   text-align: center;
+   font-size: 30px;
+   font-family: Gabriela;
+ }
+ .addpost {
+   width: 20pc;
+   height: 4pc;
+   font-size: 2pc;
+   font-family: Gabriela;
+   margin-bottom: 39px;
+  position: relative;
+  left: 36.5%;
  }
